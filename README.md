@@ -5,41 +5,7 @@ Projet du module **Systèmes Distribués Agentiques** — Master SDIA, ENSET Moh
 Application bancaire en architecture microservices avec **Spring Boot** et **Spring Cloud**, enrichie d'un **agent IA** (Spring AI) qui accède aux services via le **Model Context Protocol (MCP)**, et accessible depuis le web, Telegram et Discord.
 
 ## Architecture
-```mermaid
-flowchart TB
-    subgraph Clients
-        Web["Angular / Postman"]
-        Telegram["Telegram"]
-        Discord["Discord"]
-    end
-
-    subgraph Infrastructure
-        Gateway["gateway-service :9999"]
-        Discovery["discovery-service :8761"]
-    end
-
-    subgraph Services["Services métier"]
-        Customer["customer-service :8056"]
-        EBank["ebank-service :8057"]
-    end
-
-    subgraph IA["Agent IA"]
-        Chatbot["chatbot-service :8058"]
-        LLM["LLM"]
-    end
-
-    Web --> Gateway
-    Telegram <--> Chatbot
-    Discord <--> Chatbot
-    Gateway --> Customer
-    Gateway --> EBank
-    Gateway --> Chatbot
-    EBank -- "OpenFeign + Resilience4j" --> Customer
-    Chatbot -- "MCP" --> Customer
-    Chatbot -- "MCP" --> EBank
-    Chatbot --> LLM
-    Gateway -. "découverte" .-> Discovery
-```
+![Architecture du projet](doc/architecture.png)
 ## Méthode de travail
 
 Le projet suit le **GitHub Flow** :

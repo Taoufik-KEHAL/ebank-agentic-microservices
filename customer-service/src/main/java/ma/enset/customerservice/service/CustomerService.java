@@ -3,6 +3,7 @@ package ma.enset.customerservice.service;
 
 import lombok.RequiredArgsConstructor;
 import ma.enset.customerservice.entity.Customer;
+import ma.enset.customerservice.exception.CustomerNotFoundException;
 import ma.enset.customerservice.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class CustomerService {
 
     public Customer getCustomerById(Long id) {
         return customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Client introuvable : " + id));
+                .orElseThrow(() -> new CustomerNotFoundException(id));
     }
 
 

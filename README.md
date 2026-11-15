@@ -5,7 +5,6 @@ Projet du module **Systèmes Distribués Agentiques** — Master SDIA, ENSET Moh
 Application bancaire en architecture microservices avec **Spring Boot** et **Spring Cloud**, enrichie d'un **agent IA** (Spring AI) qui accède aux services via le **Model Context Protocol (MCP)**, et accessible depuis le web, Telegram et Discord.
 
 ## Architecture
-
 ```mermaid
 flowchart TB
     subgraph Clients
@@ -41,8 +40,6 @@ flowchart TB
     Chatbot --> LLM
     Gateway -. "découverte" .-> Discovery
 ```
-
-
 ## Méthode de travail
 
 Le projet suit le **GitHub Flow** :

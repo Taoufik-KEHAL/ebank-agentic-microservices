@@ -7,22 +7,41 @@ Application bancaire en architecture microservices avec **Spring Boot** et **Spr
 ## Architecture
 
 ```mermaid
-flowchart LR
-    Client["Clients REST<br/>(Postman, Angular)"] --> Gateway["Gateway<br/>:9999"]
-    Telegram["Telegram"] <--> Chatbot
-    Discord["Discord"] <--> Chatbot
-    Gateway --> Customer["customer-service<br/>:8056"]
-    Gateway --> EBank["ebank-service<br/>:8057"]
-    Gateway --> Chatbot["chatbot-service<br/>:8058"]
+flowchart TB
+    subgraph Clients
+        Web["Angular / Postman"]
+        Telegram["Telegram"]
+        Discord["Discord"]
+    end
+
+    subgraph Infrastructure
+        Gateway["gateway-service :9999"]
+        Discovery["discovery-service :8761"]
+    end
+
+    subgraph Services["Services métier"]
+        Customer["customer-service :8056"]
+        EBank["ebank-service :8057"]
+    end
+
+    subgraph IA["Agent IA"]
+        Chatbot["chatbot-service :8058"]
+        LLM["LLM"]
+    end
+
+    Web --> Gateway
+    Telegram <--> Chatbot
+    Discord <--> Chatbot
+    Gateway --> Customer
+    Gateway --> EBank
+    Gateway --> Chatbot
     EBank -- "OpenFeign + Resilience4j" --> Customer
     Chatbot -- "MCP" --> Customer
     Chatbot -- "MCP" --> EBank
-    Chatbot --> LLM["LLM"]
-    Customer -. "enregistrement" .-> Discovery["Discovery Service<br/>(Eureka) :8761"]
-    EBank -.-> Discovery
-    Chatbot -.-> Discovery
-    Gateway -.-> Discovery
+    Chatbot --> LLM
+    Gateway -. "découverte" .-> Discovery
 ```
+
 
 ## Méthode de travail
 

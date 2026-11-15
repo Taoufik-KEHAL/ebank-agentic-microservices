@@ -14,14 +14,5 @@ public class CustomerServiceApplication {
         SpringApplication.run(CustomerServiceApplication.class, args);
     }
 
-        @Bean
-        public CommandLineRunner commandLineRunner(CustomerRepository customerRepository) {
-           return args -> {
-               customerRepository.save(Customer.builder().name("Taoufik").email("taoufik@gmail.com").build());
-               customerRepository.save(Customer.builder().name("Tarik").email("tarik@gmail.com").build());
-               customerRepository.save(Customer.builder().name("Sara").email("sara@gmail.com").build());       };
-
-
-        }
 
 }

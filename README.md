@@ -1,6 +1,8 @@
 # ebank-agentic-microservices
 
-Projet du module **Systèmes Distribués Agentiques** — Master SDIA, ENSET Mohammedia.
+**Module :** Systèmes Distribués Agentiques — Pr. Mohamed YOUSSFI
+**Formation :** Master SDIA — ENSET Mohammedia — 2026-2027
+**Réalisé par :** Taoufik KEHAL
 
 Application bancaire en architecture microservices avec **Spring Boot** et **Spring Cloud**, enrichie d'un **agent IA** (Spring AI) qui accède aux services via le **Model Context Protocol (MCP)**, et accessible depuis le web, Telegram et Discord.
 

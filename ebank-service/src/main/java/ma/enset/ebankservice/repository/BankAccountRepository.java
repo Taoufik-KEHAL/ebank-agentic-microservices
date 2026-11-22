@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Taoufik KEHAL
  **/
 public interface BankAccountRepository extends JpaRepository<BankAccount, String> {
+    BankAccount getBankAccountById(String id);
 }
